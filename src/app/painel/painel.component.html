@@ -5,22 +5,22 @@
     <div class="jumbotron bg-light">
         <div class="row">
             <div class="col-sm-6">
-                <app-progresso></app-progresso>
+                <app-progresso [progresso]="progresso"></app-progresso>
             </div>
             <div class="col-sm-6">
                 <div class="d-flex justify-content-end">
-                     <app-tentativas></app-tentativas>
+                     <app-tentativas [tentativas]="tentativas"></app-tentativas>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col">
-                <h6>Taduza a Frase:</h6>
-                <p>Hou are You?</p>
+                <h6>{{instrucao}}</h6>
+                <p>{{rodadaFrase.fraseEng}}</p>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Digite a tradução:</label>
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea class="form-control" rows="3" (input)="atualizaResposta($event)" [value]="resposta" placeholder="Não esqueça de começar com letra Maiúscula e dos acentos"></textarea>
                   </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col">
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-danger">Verificar</button>
+                    <button type="button" class="btn btn-danger" (click)="verificarResposta()">Verificar</button>
                 </div>
             </div>
         </div>
