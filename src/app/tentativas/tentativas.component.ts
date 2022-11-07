@@ -10,9 +10,9 @@ import { Coracao } from '../shared/coracao.model';
 export class TentativasComponent implements OnInit, OnChanges {
 
 
-  @Input() public tentativas: Number | undefined 
+  @Input() public tentativas: Number | any  
 
-  public coracoes: Coracao[] = [
+  public coracoes: Coracao[] | any = [
     new Coracao(true),
     new Coracao(true),
     new Coracao(true)
@@ -20,7 +20,13 @@ export class TentativasComponent implements OnInit, OnChanges {
   constructor() { }
 
 ngOnChanges(changes: SimpleChanges): void {
-  this.tentativas
+  //this.tentativas
+  //this.coracoes.length
+  if(this.tentativas !== this.coracoes.length){
+    let indice = this.coracoes.length - this.tentativas
+
+    this.coracoes[indice - 1] = false
+  }
 }
 
   ngOnInit(): void {
